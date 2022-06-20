@@ -4,10 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -20,12 +17,13 @@ import java.util.Objects;
 @Entity
 public class Group {
     @Id
-    @NonNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     @NonNull
+    @Column(nullable = false)
     private String hexColor;
     @NonNull
+    @Column(nullable = false)
     private String groupName;
 
     @Override
@@ -33,7 +31,7 @@ public class Group {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Group group = (Group) o;
-        return id.equals(group.id) && groupName.equals(group.groupName) && hexColor.equals(group.hexColor);
+        return id == group.id && groupName.equals(group.groupName) && hexColor.equals(group.hexColor);
     }
 
     @Override

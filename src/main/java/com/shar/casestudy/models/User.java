@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Getter
 @Setter
 @Slf4j
@@ -23,7 +23,7 @@ public class User {
     @Id
     @NonNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
 
     @NonNull
     @Column(name = "username", unique = true)
