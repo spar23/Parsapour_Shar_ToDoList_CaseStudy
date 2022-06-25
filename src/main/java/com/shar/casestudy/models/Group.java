@@ -5,7 +5,9 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,16 +17,25 @@ import java.util.Objects;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
+@Table(name="group_todo")
 public class Group {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
     @NonNull
-    @Column(nullable = false)
-    private String hexColor;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
     @NonNull
-    @Column(nullable = false)
-    private String groupName;
+    String hexColor;
+    @NonNull
+    String groupName;
+
+    @OneToMany(mappedBy = "group", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
+    private Set<TodoItem> todoItems = new LinkedHashSet<>();
+
+    //Helper method
+    public void addTodoItem(TodoItem item){
+        todoItems.add(item);
+    }
+
 
     @Override
     public boolean equals(Object o) {

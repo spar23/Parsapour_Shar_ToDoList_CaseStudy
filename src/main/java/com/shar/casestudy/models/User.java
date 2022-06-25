@@ -6,8 +6,10 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,22 +24,23 @@ public class User {
 
     @Id
     @NonNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
     @NonNull
     @Column(name = "username", unique = true)
-    private String username;
+    String username;
     @NonNull
     @Column(name = "password", unique = true)
-    private String password;
+    String password;
 
 
     @ToString.Exclude
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    List<TodoItem> items = new java.util.ArrayList<>();
+    Set<TodoItem> todoItems = new LinkedHashSet<>();
 
 
+    // Hashcode and Equals override
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,5 +1,6 @@
 package com.shar.casestudy.controllers;
 
+import com.shar.casestudy.models.TodoItem;
 import com.shar.casestudy.services.TodoItemService;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -27,5 +28,11 @@ public class TodoItemController {
     public String getAllTodoItem(Model model){
         model.addAttribute("todoitems", todoItemService.findAll());
         return "mylist";
+    }
+
+    @GetMapping(value = "/additem")
+    public String showAddItemPage(Model model) {
+        model.addAttribute("todoItem", new TodoItem());
+        return "additem";
     }
 }

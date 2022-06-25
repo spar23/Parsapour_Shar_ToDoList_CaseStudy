@@ -16,29 +16,30 @@ import java.util.Objects;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-//@Table(name = "Items")
+@Table(name = "todo_item")
 public class TodoItem {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        private int id;
-    @NonNull
-   @Column(nullable = false)
-        private String description;
-    @NonNull
-    @Column(nullable = false)
-        private String status;
+        @NonNull
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        int id;
+        @NonNull
+        String description;
 
-//    @NonNull
-//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-//    @JoinColumn(nullable = false)
-//    private Group group;
+    @NonNull
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(nullable = false)
+        Status status;
 
 
     @NonNull
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(nullable = false)
     User user;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name = "group_id")
+    Group group;
 
     @Override
     public boolean equals(Object o) {
