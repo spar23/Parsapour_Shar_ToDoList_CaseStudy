@@ -11,6 +11,7 @@ import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
+//@RequiredArgsConstructor
 @Getter
 @Setter
 @Slf4j
@@ -31,9 +32,24 @@ public class Group {
     @OneToMany(mappedBy = "group", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
     private Set<TodoItem> todoItems = new LinkedHashSet<>();
 
+    @NonNull
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(nullable = false)
+    User user;
+
+    public Group(String groupName, String hexColor, User user) {
+        this.groupName = groupName;
+        this.hexColor = hexColor;
+        this.user = user;
+    }
+
     //Helper method
     public void addTodoItem(TodoItem item){
         todoItems.add(item);
+    }
+
+    public void deleteItem(TodoItem item){
+        todoItems.remove(item);
     }
 
 

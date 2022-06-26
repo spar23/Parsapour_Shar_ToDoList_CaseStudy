@@ -25,8 +25,8 @@ public class TodoItemController {
 
     }
     @GetMapping
-    public String getAllTodoItem(Model model){
-        model.addAttribute("todoitems", todoItemService.findAll());
+    public String getAllTodoItem(int id, Model model){
+        model.addAttribute("todoitems", todoItemService.findAllByUserID(id));
         return "mylist";
     }
 

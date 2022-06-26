@@ -35,10 +35,19 @@ public class User {
     String password;
 
 
+
+//    @ToString.Exclude
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+//    Set<TodoItem> todoItems = new LinkedHashSet<>();
+
     @ToString.Exclude
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    Set<TodoItem> todoItems = new LinkedHashSet<>();
+    Set<Group> groups = new LinkedHashSet<>();
 
+//Helper Method
+    public void addGroup(Group g){
+        groups.add(g);
+    }
 
     // Hashcode and Equals override
     @Override
