@@ -26,6 +26,15 @@ public class TodoItem {
         @NonNull
         String description;
 
+    public TodoItem(int id, String description,User user, Status status, Group group) {
+        this.id = id;
+        this.description = description;
+        this.status = status;
+        this.group = group;
+        this.user = user;
+
+    }
+
     @NonNull
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(nullable = false)

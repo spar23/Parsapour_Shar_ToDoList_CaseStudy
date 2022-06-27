@@ -11,7 +11,7 @@ import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 @Slf4j
@@ -41,6 +41,12 @@ public class Group {
         this.groupName = groupName;
         this.hexColor = hexColor;
         this.user = user;
+    }
+
+    public Group(@NonNull int id, @NonNull String hexColor, @NonNull String groupName) {
+        this.id = id;
+        this.hexColor = hexColor;
+        this.groupName = groupName;
     }
 
     //Helper method

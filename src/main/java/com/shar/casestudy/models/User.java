@@ -13,7 +13,7 @@ import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 @Slf4j
@@ -44,7 +44,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     Set<Group> groups = new LinkedHashSet<>();
 
-//Helper Method
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    //Helper Method
     public void addGroup(Group g){
         groups.add(g);
     }

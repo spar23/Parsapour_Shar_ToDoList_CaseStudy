@@ -7,8 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface GroupRepository extends JpaRepository<Group, Integer> {
     public Group findByGroupNameAndUser(String name, User user);
 
+    public List<Group> findAllByUser(User user);
 }

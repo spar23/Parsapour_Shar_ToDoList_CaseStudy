@@ -23,8 +23,14 @@ public class GroupController {
         this.groupService = groupService;
     }
 
+//    @GetMapping("/mylist")
+//    public void showGroupList(int userID){
+//
+//    }
+
+
     @PostMapping("/group")
-    public void creategroup(@RequestBody Group group, int userID) {
+    public void creategroup(@RequestBody Group group, Integer userID) {
 
         groupService.saveOrUpdateGroup(group, userID);
     }

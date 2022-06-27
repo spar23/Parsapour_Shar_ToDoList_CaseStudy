@@ -35,7 +35,7 @@ public class GroupService {
     public void saveOrUpdateGroup(Group group, int userID){
         // If group doesn't exist then add it to the user.
 
-        User user = userRepository.findById(userID + "").orElseThrow();
+        User user = userRepository.findById(userID).orElseThrow();
         Group possibleGroup = groupRepository.findByGroupNameAndUser(group.getGroupName(), user);
         if (possibleGroup == null) {
 //            Group group = new Group(groupName, hexColor, user);
@@ -50,10 +50,15 @@ public class GroupService {
 
     }
 
-//    public void saveOrUpdate(Group c) {
-//        courseRepository.save(c);
-//        log.info(String.format("Course ID Generated: %d Course Name: %s", c.getId(), c.getName()));
-//    }
+    public List<Group> getGroupList(int userId){
+        User user = userRepository.findById(userId).orElseThrow();
+        return groupRepository.findAllByUser(user);
+    }
+
+    public void saveOrUpdate(Group group){
+        groupRepository.save(group);
+
+    }
 
 
 

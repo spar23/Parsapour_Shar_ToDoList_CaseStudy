@@ -1,9 +1,11 @@
 package com.shar.casestudy.services;
 
 import com.shar.casestudy.models.Group;
+import com.shar.casestudy.models.Status;
 import com.shar.casestudy.models.TodoItem;
 import com.shar.casestudy.models.User;
 import com.shar.casestudy.repositories.GroupRepository;
+import com.shar.casestudy.repositories.StatusRepository;
 import com.shar.casestudy.repositories.TodoItemRepository;
 import com.shar.casestudy.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +20,25 @@ public class TodoItemService {
 
     UserRepository userRepository;
 
+    StatusRepository statusRepository;
+
 
     @Autowired
-    public TodoItemService(TodoItemRepository todoItemRepository, GroupRepository groupRepository, UserRepository userRepository) {
+    public TodoItemService(TodoItemRepository todoItemRepository, GroupRepository groupRepository, UserRepository userRepository, StatusRepository statusRepository) {
         this.todoItemRepository = todoItemRepository;
         this.groupRepository = groupRepository;
         this.userRepository = userRepository;
+        this.statusRepository = statusRepository;
+    }
+
+    public void saveOrUpdate(TodoItem todoItem){
+        todoItemRepository.save(todoItem);
+
     }
 
     public List<TodoItem> findAllByUserID(int id) {
         System.out.println("Hello testing");
-        User user = userRepository.findById(id + "").orElseThrow();
+        User user = userRepository.findById(id).orElseThrow();
         return todoItemRepository.findAllByUser(user);
     }
     public void delete(TodoItem todoItem) {
@@ -46,8 +56,14 @@ public class TodoItemService {
         g.addTodoItem(tdi);
     }
 
-        public void addTodoItem(TodoItem todoitem) {
-            todoItemRepository.save(todoitem);
+        public void addTodoItem(TodoItem todoItem, Integer userId, Integer groupId, String statusId) {
+           User user = userRepository.findById(userId).orElse(null);
+           todoItem.setUser(user);
+            Group group = groupRepository.findById(groupId).orElse(null);
+            todoItem.setGroup(group);
+            Status status = statusRepository.findById(statusId).orElse(null);
+            todoItem.setStatus(status);
+            todoItemRepository.save(todoItem);
         }
     }
 
