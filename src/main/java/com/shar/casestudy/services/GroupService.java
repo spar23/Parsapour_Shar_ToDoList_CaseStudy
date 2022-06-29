@@ -30,7 +30,7 @@ public class GroupService {
         this.groupRepository = groupRepository;
         this.userRepository = userRepository;
     }
-
+//creates a new group
     @Transactional(rollbackOn = {NoSuchElementException.class})
     public void saveOrUpdateGroup(Group group, int userID){
         // If group doesn't exist then add it to the user.
@@ -54,7 +54,7 @@ public class GroupService {
         User user = userRepository.findById(userId).orElseThrow();
         return groupRepository.findAllByUser(user);
     }
-
+//method for commandlinerunner
     public void saveOrUpdate(Group group){
         groupRepository.save(group);
 

@@ -10,4 +10,16 @@ public class HomeController {
     public String homePage(){
         return "index";
     }
+
+    @GetMapping(value = {"/settings"})
+    public String settingsPage(){
+        return "settings";
+    }
+
+    @GetMapping(value = {"/about"})
+    public String aboutPage(){
+        return "about";
+    }
+
+
 }

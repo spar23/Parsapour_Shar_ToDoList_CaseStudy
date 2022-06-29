@@ -30,7 +30,7 @@ public class TodoItemService {
         this.userRepository = userRepository;
         this.statusRepository = statusRepository;
     }
-
+//for the commandlinerunner.saves in the db
     public void saveOrUpdate(TodoItem todoItem){
         todoItemRepository.save(todoItem);
 
@@ -41,21 +41,23 @@ public class TodoItemService {
         User user = userRepository.findById(id).orElseThrow();
         return todoItemRepository.findAllByUser(user);
     }
+   //delete todoitem
     public void delete(TodoItem todoItem) {
         todoItemRepository.delete(todoItem);
     }
 
-    public void EditItem(int itemId, String newDescription, int groupId) {
+//update todoitem. post request for controller.
+    public void editItem(TodoItem todoItem) {
         //find the item by itemid. If item doesn't exist you can't edit it.
 
-        TodoItem tdi = todoItemRepository.findById(itemId).orElseThrow();
-        Group g = groupRepository.findById(groupId).orElseThrow();
+//        TodoItem tdi = todoItemRepository.findById(itemId).orElseThrow();
+        Group g = todoItem.getGroup();
         //remove the item from the old group
-        tdi.getGroup().deleteItem(tdi);
-        tdi.setGroup(g);
-        g.addTodoItem(tdi);
+        todoItem.getGroup().deleteItem(todoItem);
+        todoItem.setGroup(g);
+        g.addTodoItem(todoItem);
     }
-
+//create todoitem
         public void addTodoItem(TodoItem todoItem, Integer userId, Integer groupId, String statusId) {
            User user = userRepository.findById(userId).orElse(null);
            todoItem.setUser(user);
@@ -64,6 +66,10 @@ public class TodoItemService {
             Status status = statusRepository.findById(statusId).orElse(null);
             todoItem.setStatus(status);
             todoItemRepository.save(todoItem);
+        }
+     //A get request for controller
+        public TodoItem findItemById(int itemId){
+        return todoItemRepository.findById(itemId).orElseThrow();
         }
     }
 

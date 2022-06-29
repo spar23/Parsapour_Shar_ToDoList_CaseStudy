@@ -17,21 +17,21 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a href="index.html">
+                <a href="/index">
                     My List (Home)
                 </a>
             </li>
             <li>
-                <a href="add-item.html">Add Item</a>
+                <a href="/todoitem/additem">Add Item</a>
             </li>
             <li>
-                <a href="add-group.html" class="current">Add Group</a>
+                <a href="/group/addgroup" class="current">Add Group</a>
             </li>
             <li>
-                <a href="settings.html">Settings</a>
+                <a href="/settings">Settings</a>
             </li>
             <li>
-                <a href="about.html">About</a>
+                <a href="/about">About</a>
             </li>
         </ul>
     </div>
@@ -41,9 +41,30 @@
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <h1>Add Group</h1>
-            <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-            <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            <!-- <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+            <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p> -->
+
+            <form action="/group/addgroup" method="POST">
+
+                <div class="mb-3">
+                    <label for="groupname" class="form-label">Group Name</label>
+                    <input type="text" class="form-control" id="groupname" name="groupname" aria-describedby="valHelp">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <!-- <div class="mb-3">
+                  <label for="validationCustom02" class="form-label">Color</label>
+                  <input type="text" class="form-control" id="validationCustom02">
+                </div> -->
+
+                 <button type="submit" class="btn btn-primary">Submit</button>
+
+
+            </form>
+            <br />
+
+            <div style="float:right; margin-left: 12px;"><a href="#addItemButton" class="btn btn-secondary" id="addItemButton">Save Group</a></div>
+            <div style="float:right"><a href="#addItemButton1" class="btn btn-secondary" id="addItemButton1">Cancel</a></div>
+            <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
         </div>
     </div>
     <!-- /#page-content-wrapper -->

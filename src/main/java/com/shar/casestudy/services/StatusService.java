@@ -7,6 +7,8 @@ import com.shar.casestudy.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StatusService {
 
@@ -22,5 +24,9 @@ public class StatusService {
     public void saveOrUpdate(Status status){
         statusRepository.save(status);
 
+    }
+
+    public List<Status> getAllStatus(){
+        return statusRepository.findAll();
     }
 }

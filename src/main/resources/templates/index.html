@@ -51,21 +51,21 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a href="index.html" class="current">
+                <a href="/index" class="current">
                     My List (Home)
                 </a>
             </li>
             <li>
-                <a href="add-item.html">Add Item</a>
+                <a href="/todoitem/additem">Add Item</a>
             </li>
             <li>
-                <a href="add-group.html">Add Group</a>
+                <a href="/group/addgroup">Add Group</a>
             </li>
             <li>
-                <a href="settings.html">Settings</a>
+                <a href="/settings">Settings</a>
             </li>
             <li>
-                <a href="about.html">About</a>
+                <a href="/about">About</a>
             </li>
         </ul>
     </div>
@@ -76,6 +76,7 @@
         <div class="container-fluid">
 
             <h1>My List</h1>
+            <h4>Hello user</h4>
             <div class="form-floating">
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
                     <option selected value="1">All items</option>
@@ -94,25 +95,38 @@
                     <div class="ms-2 me-auto">
                         <div class="fw-bold itemTitle">[Item Title]</div>
                         <span class="itemDescription">[Item Description Lorem]</span>
+                        <div class="itemDegroup">[Item Group]</div>
+
+                        <div class="form-floating">
+                            <select class="form-select" id="floatingSelect1" aria-label="Floating label select example">
+                                <option selected value="1">Status</option>
+                                <option value="2">Done</option>
+                                <option value="3">Todo</option>
+                                <option value="3">doing</option>
+                            </select>
+                            <label for="floatingSelect">view</label>
+                        </div>
                     </div>
-                    <span class="badge bg-primary rounded-pill">Edit</span>&nbsp;
-                    <span class="badge bg-primary rounded-pill">Delete</span>
+                    <span class="badge bg-primary rounded-pill"><a href="/todoitem/edititem">Edit</a></span>&nbsp;
+                    <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold itemTitle">[Item Title]</div>
                         <span class="itemDescription">[Item Description Lorem]</span>
+                        <div class="itemDegroup">[Item Group]</div>
                     </div>
-                    <span class="badge bg-primary rounded-pill">Edit</span>&nbsp;
-                    <span class="badge bg-primary rounded-pill">Delete</span>
+                    <span class="badge bg-primary rounded-pill"><a href="/todoitem/edititem">Edit</a></span>&nbsp;
+                    <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold itemTitle">[Item Title]</div>
                         <span class="itemDescription">[Item Description Lorem]</span>
+                        <div class="itemDegroup">[Item Group]</div>
                     </div>
-                    <span class="badge bg-primary rounded-pill">Edit</span>&nbsp;
-                    <span class="badge bg-primary rounded-pill">Delete</span>
+                    <span class="badge bg-primary rounded-pill"><a href="/todoitem/edititem">Edit</a></span>&nbsp;
+                    <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>
                 </li>
             </ol>
             <div style="float:right"><a href="#addItemButton" class="btn btn-secondary" id="addItemButton">Add Item</a></div>
@@ -132,6 +146,11 @@ $("#menu-toggle").click(function(e) {
 </script>
 
 -->
+<script>
+function myFunction() {
+  confirm("Are you sure you want to delete?");
+}
+</script>
 </body>
 </html>
 

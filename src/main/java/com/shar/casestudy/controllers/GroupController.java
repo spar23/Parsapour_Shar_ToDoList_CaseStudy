@@ -7,9 +7,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Slf4j
@@ -27,12 +26,21 @@ public class GroupController {
 //    public void showGroupList(int userID){
 //
 //    }
+@GetMapping(value = "/addgroup")
+public String getAllGroups(Integer id, Model model){
+    System.out.println(id);
+    if(id == null){
+        id = 1;
+    }
+    model.addAttribute("groups", groupService.getGroupList(id));
+    return "addgroup";
+}
 
 
-    @PostMapping("/group")
-    public void creategroup(@RequestBody Group group, Integer userID) {
-
-        groupService.saveOrUpdateGroup(group, userID);
+    @PostMapping("/addgroup")
+    public void creategroup(@ModelAttribute Group group, Integer userId) {
+        System.out.println(group);
+        groupService.saveOrUpdateGroup(group, userId);
     }
 
 }
