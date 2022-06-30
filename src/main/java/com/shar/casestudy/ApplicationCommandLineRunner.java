@@ -56,7 +56,7 @@ public class ApplicationCommandLineRunner implements CommandLineRunner {
         TodoItem todoItem2 = new TodoItem(2, "finish organizing the shelf", u, doing, g1);
         todoItemService.saveOrUpdate(todoItem2);
 //        todoItemService.saveOrUpdate(new TodoItem(3, "assignment"));
-        System.out.println("Run the application");
+        log.info("Run the application");;
 
     }
 }

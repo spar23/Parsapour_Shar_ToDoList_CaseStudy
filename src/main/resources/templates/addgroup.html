@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,17 +44,29 @@
             <!-- <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
             <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p> -->
 
-            <form action="/group/addgroup" method="POST">
+            <form th:action="@{/group/addgroup}" method="POST">
+                <div class="mb-3">
+                    <label for="userid" class="form-label">User id</label>
+                    <input type="text" class="form-control" id="userid" name="userid" aria-describedby="valHelp">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
 
                 <div class="mb-3">
                     <label for="groupname" class="form-label">Group Name</label>
-                    <input type="text" class="form-control" id="groupname" name="groupname" aria-describedby="valHelp">
+                    <input th:field="*{newgroup.groupName}" type="text" class="form-control" id="groupname" name="groupname" aria-describedby="valHelp">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="mb-3">
+                    <label for="hexcolor" class="form-label">Hex Color</label>
+                    <input th:field="*{newgroup.hexColor}" type="text" class="form-control" id="hexcolor" name="hexcolor" aria-describedby="valHelp">
                     <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
                 <!-- <div class="mb-3">
                   <label for="validationCustom02" class="form-label">Color</label>
                   <input type="text" class="form-control" id="validationCustom02">
                 </div> -->
+
+
 
                  <button type="submit" class="btn btn-primary">Submit</button>
 

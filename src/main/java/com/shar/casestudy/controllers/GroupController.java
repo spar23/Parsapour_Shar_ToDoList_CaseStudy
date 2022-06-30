@@ -26,21 +26,22 @@ public class GroupController {
 //    public void showGroupList(int userID){
 //
 //    }
-@GetMapping(value = "/addgroup")
+@GetMapping("/addgroup")
 public String getAllGroups(Integer id, Model model){
-    System.out.println(id);
     if(id == null){
         id = 1;
     }
+    model.addAttribute("newgroup", new Group());
     model.addAttribute("groups", groupService.getGroupList(id));
     return "addgroup";
 }
 
 
     @PostMapping("/addgroup")
-    public void creategroup(@ModelAttribute Group group, Integer userId) {
-        System.out.println(group);
+    public String creategroup(@ModelAttribute("newgroup") Group group, @RequestParam("userid") Integer userId) {
+        log.info("group object: {} userid: {}", group, userId);
         groupService.saveOrUpdateGroup(group, userId);
+        return "redirect:/";
     }
 
 }

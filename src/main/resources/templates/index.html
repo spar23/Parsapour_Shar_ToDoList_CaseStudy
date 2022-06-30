@@ -33,7 +33,7 @@
 <!--</html>-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,14 +76,18 @@
         <div class="container-fluid">
 
             <h1>My List</h1>
-            <h4>Hello user</h4>
             <div class="form-floating">
+<!--                th:field="*{selected_group}"-->
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                    <option selected value="1">All items</option>
-                    <option value="2">Group: Shopping</option>
-                    <option value="3">Group: Work</option>
+                    <option selected value="0">All items</option>
+                    <option th:each="group: ${groups}"
+                            th:value="${group.id}"
+                            th:text="${group.groupName}"/>
                 </select>
+
+
                 <label for="floatingSelect">View</label>
+<!--                <div th:text="${selected_group}"/>-->
             </div>
 
             <!-- ALERT USED FOR EMPTY LIST ONLY -->
@@ -91,43 +95,44 @@
                 You don't have any items yet. Click the button to create.
             </div> -->
             <ol class="list-group list-group-flush" style="margin: 12px 0 12px 0">
-                <li class="list-group-item d-flex justify-content-between align-items-start">
+                <li th:each="todoitem: ${todoitems}" class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
-                        <div class="fw-bold itemTitle">[Item Title]</div>
-                        <span class="itemDescription">[Item Description Lorem]</span>
-                        <div class="itemDegroup">[Item Group]</div>
+<!--                        <div  classth:text="${todoitem.groupName}"="fw-bold itemTitle">[Item Title]</div>-->
+                        <span th:text="'Description: ' + ${todoitem.description}" class="itemDescription"></span>
+                        <div th:text="'Group: ' + ${todoitem.group.groupName}" class="itemGroup"></div>
+                        <div th:text="'Status: ' + ${todoitem.status.status}" class="itemStatus"></div>
 
-                        <div class="form-floating">
-                            <select class="form-select" id="floatingSelect1" aria-label="Floating label select example">
-                                <option selected value="1">Status</option>
-                                <option value="2">Done</option>
-                                <option value="3">Todo</option>
-                                <option value="3">doing</option>
-                            </select>
-                            <label for="floatingSelect">view</label>
-                        </div>
+<!--                        <div class="form-floating">-->
+<!--                            <select class="form-select" id="floatingSelect1" aria-label="Floating label select example">-->
+<!--                                <option selected value="1">Status</option>-->
+<!--                                <option value="2">Done</option>-->
+<!--                                <option value="3">Todo</option>-->
+<!--                                <option value="3">doing</option>-->
+<!--                            </select>-->
+<!--                            <label for="floatingSelect">view</label>-->
+<!--                        </div>-->
                     </div>
                     <span class="badge bg-primary rounded-pill"><a href="/todoitem/edititem">Edit</a></span>&nbsp;
                     <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold itemTitle">[Item Title]</div>
-                        <span class="itemDescription">[Item Description Lorem]</span>
-                        <div class="itemDegroup">[Item Group]</div>
-                    </div>
-                    <span class="badge bg-primary rounded-pill"><a href="/todoitem/edititem">Edit</a></span>&nbsp;
-                    <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold itemTitle">[Item Title]</div>
-                        <span class="itemDescription">[Item Description Lorem]</span>
-                        <div class="itemDegroup">[Item Group]</div>
-                    </div>
-                    <span class="badge bg-primary rounded-pill"><a href="/todoitem/edititem">Edit</a></span>&nbsp;
-                    <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>
-                </li>
+<!--                <li class="list-group-item d-flex justify-content-between align-items-start">-->
+<!--                    <div class="ms-2 me-auto">-->
+<!--                        <div class="fw-bold itemTitle">[Item Title]</div>-->
+<!--                        <span class="itemDescription">[Item Description Lorem]</span>-->
+<!--                        <div class="itemGroup">[Item Group]</div>-->
+<!--                    </div>-->
+<!--                    <span class="badge bg-primary rounded-pill"><a href="/todoitem/edititem">Edit</a></span>&nbsp;-->
+<!--                    <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>-->
+<!--                </li>-->
+<!--                <li class="list-group-item d-flex justify-content-between align-items-start">-->
+<!--                    <div class="ms-2 me-auto">-->
+<!--                        <div class="fw-bold itemTitle">[Item Title]</div>-->
+<!--                        <span class="itemDescription">[Item Description Lorem]</span>-->
+<!--                        <div class="itemDegroup">[Item Group]</div>-->
+<!--                    </div>-->
+<!--                    <span class="badge bg-primary rounded-pill"><a href="/todoitem/edititem">Edit</a></span>&nbsp;-->
+<!--                    <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>-->
+<!--                </li>-->
             </ol>
             <div style="float:right"><a href="#addItemButton" class="btn btn-secondary" id="addItemButton">Add Item</a></div>
         </div>

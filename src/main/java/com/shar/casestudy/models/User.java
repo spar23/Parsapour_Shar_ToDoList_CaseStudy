@@ -52,6 +52,7 @@ public class User {
     //Helper Method
     public void addGroup(Group g){
         groups.add(g);
+        g.setUser(this);
     }
 
     // Hashcode and Equals override

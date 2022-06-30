@@ -54,6 +54,7 @@ public class Group {
         todoItems.add(item);
     }
 
+
     public void deleteItem(TodoItem item){
         todoItems.remove(item);
     }
