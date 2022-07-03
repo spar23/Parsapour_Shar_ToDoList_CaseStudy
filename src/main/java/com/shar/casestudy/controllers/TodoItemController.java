@@ -84,9 +84,9 @@ public class TodoItemController {
 //        todoItemService.editItem(todoItem);
         return "index";
     }
-    @DeleteMapping("/todoitem")
-    public void delete(Integer itemId){
-        TodoItem tdi = todoItemService.findItemById(itemId);
+    @PostMapping("/todoitem/{id}")
+    public void delete(@PathVariable Integer id){
+        TodoItem tdi = todoItemService.findItemById(id);
         todoItemService.delete(tdi);
     }
 }

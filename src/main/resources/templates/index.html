@@ -110,12 +110,13 @@
 <!--                        </div>-->
                     </div>
                     <span class="badge bg-primary rounded-pill"><a th:href="'/todoitem/edititem?itemId=' + ${todoitem.id}">Edit</a></span>&nbsp;
-                    <span class="badge bg-primary rounded-pill"><a th:method="delete" th:href="'/todoitem/todoitem?itemId=' + ${todoitem.id}">Delete</a></span>
+<!--                    <span class="badge bg-primary rounded-pill"><a th:method="delete" th:href="'/todoitem/todoitem?itemId=' + ${todoitem.id}">Delete</a></span>-->
 <!--                    <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>-->
-<!--                    <form th:action="@{/todoitem/todoitem}" th:method="delete">-->
+
+                    <form th:action="@{/todoitem/todoitem/{id}(id=${todoitem.id})}" th:method="Post">
 <!--                        <input type="hidden"  th:value="*{todoitem.id}" id="itemId" name="itemId">-->
-<!--                        <button type="submit" class="btn btn-danger">Delete</button>-->
-<!--                    </form>-->
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </li>
 <!--                <li class="list-group-item d-flex justify-content-between align-items-start">-->
 <!--                    <div class="ms-2 me-auto">-->

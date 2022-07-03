@@ -43,7 +43,8 @@ public class TodoItemService {
     }
    //delete todoitem
     public void delete(TodoItem todoItem) {
-        todoItemRepository.delete(todoItem);
+
+        todoItemRepository.deleteById(todoItem.getId());
     }
 
 //update todoitem.
