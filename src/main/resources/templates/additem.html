@@ -44,8 +44,8 @@
 <!--            <p th:if="${item.itemId ne null}" class="text-warning">Persisted!</p>-->
             <form th:action="@{/todoitem/additem}"  autocomplete="off" method="post">
                 <div class="mb-3">
-                    <label for="userid" class="form-label">User id</label>
-                    <input type="text" class="form-control" id="userid" name="userId" aria-describedby="valHelp" th:field="*{item.user.id}">
+                    <label for="userId" class="form-label">User id</label>
+                    <input type="text" class="form-control" id="userId" name="userId" aria-describedby="valHelp" th:field="*{item.user.id}">
 
                 </div>
                 <div class="input-group mb-3">
@@ -61,26 +61,26 @@
 <!--                </div>-->
                 <div class="form-floating">
 
-                    <select th:field="*{item.group.id}" class="form-select" name="groupId" id="floatingSelect" aria-label="Floating label select example">
+                    <select th:field="*{item.group.id}" class="form-select" id="groupId" name="groupId" aria-label="Floating label select example">
 
                         <option th:each="group: ${groups}"
                                 th:value="${group.id}"
                                 th:text="${group.groupName}"/>
 
                     </select>
-                    <label for="floatingSelect">Group</label>
+                    <label for="groupId">Group</label>
                 </div>
                 <br/>
                 <div class="form-floating">
 
-                    <select th:field="*{item.status.status}" class="form-select" name="statusId" id="floatingSelect1" aria-label="Floating label select example">
+                    <select th:field="*{item.status.status}" class="form-select" id="statusId" name="statusId" aria-label="Floating label select example">
 
                         <option th:each="sta: ${status}"
                                 th:value="${sta.status}"
                                 th:text="${sta.status}"/>
 
                     </select>
-                    <label for="floatingSelect1">Status</label>
+                    <label for="statusId">Status</label>
                 </div>
                 <button class="btn btn-primary" type="submit" id="button-addon2">Submit</button>
 <!--                <div class="mb-3">-->
