@@ -3,6 +3,7 @@ package com.shar.casestudy.controllers;
 import com.shar.casestudy.models.Group;
 import com.shar.casestudy.models.TodoItem;
 import com.shar.casestudy.services.GroupService;
+import com.shar.casestudy.services.StatusService;
 import com.shar.casestudy.services.TodoItemService;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -24,16 +25,18 @@ public class TodoItemController {
     TodoItemService todoItemService;
     GroupService groupService;
 
+    StatusService statusService;
+
 
     @Autowired
-    public TodoItemController(TodoItemService todoItemService, GroupService groupService) {
+    public TodoItemController(TodoItemService todoItemService, GroupService groupService, StatusService statusService) {
         this.todoItemService = todoItemService;
         this.groupService = groupService;
-
+        this.statusService = statusService;
     }
 
-    @PostMapping("/todoitem")
-    public void createTodoItem(@RequestBody TodoItem todoItem, HttpServletRequest request) {
+    @PostMapping("/additem")
+    public void createTodoItem(@ModelAttribute TodoItem todoItem, HttpServletRequest request) {
         int userId = Integer.parseInt(request.getParameter("userId"));
         int groupId = Integer.parseInt(request.getParameter("groupId"));
         String statusId = request.getParameter("statusId");
@@ -43,34 +46,42 @@ public class TodoItemController {
 
     @GetMapping
     public String getAllTodoItemsAndGroups(Integer id, Model model) {
-        System.out.println(id);
+        log.info("userid: {}", id);
         if (id == null) {
             id = 1;
         }
+
         model.addAttribute("todoitems", todoItemService.findAllByUserID(id));
         model.addAttribute("groups", groupService.getGroupList(id));
         return "index";
     }
 
     @GetMapping(value = "/additem")
-    public String showAddItemPage(Model model) {
-        model.addAttribute("todoItem", new TodoItem());
-
+    public String showAddItemPage(Integer userId, Model model) {
+        if(userId == null){
+            userId = 1;
+        }
+        model.addAttribute("item", new TodoItem());
+        model.addAttribute("groups", groupService.getGroupList(userId));
+        model.addAttribute("status", statusService.getAllStatus());
         return "additem";
     }
 
     @GetMapping(value = "/edititem")
     public String editItem(Integer itemId, Model model) {
         if (itemId != null) {
-            model.addAttribute("item", todoItemService.findItemById(itemId));
+            TodoItem tdi = todoItemService.findItemById(itemId);
+            model.addAttribute("item", tdi);
+            model.addAttribute("groups", groupService.getGroupList(tdi.getUser().getId()));
+            model.addAttribute("status", statusService.getAllStatus());
         }
         return "edititem";
     }
 
     @PostMapping("/edititem")
-    public String editItem(RedirectAttributes model, @ModelAttribute("todoitem") TodoItem todoItem) {
-//        todoItemService.saveOrUpdate(todoItem);
-        todoItemService.editItem(todoItem);
+    public String editItem(@ModelAttribute("item") TodoItem todoItem) {
+        todoItemService.saveOrUpdate(todoItem);
+//        todoItemService.editItem(todoItem);
         return "index";
     }
 }

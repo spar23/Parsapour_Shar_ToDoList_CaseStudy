@@ -90,14 +90,11 @@
 <!--                <div th:text="${selected_group}"/>-->
             </div>
 
-            <!-- ALERT USED FOR EMPTY LIST ONLY -->
-            <!-- <div class="alert alert-primary" role="alert" style="margin: 12px 0 12px 0">
-                You don't have any items yet. Click the button to create.
-            </div> -->
+
             <ol class="list-group list-group-flush" style="margin: 12px 0 12px 0">
                 <li th:each="todoitem: ${todoitems}" class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
-<!--                        <div  classth:text="${todoitem.groupName}"="fw-bold itemTitle">[Item Title]</div>-->
+
                         <span th:text="'Description: ' + ${todoitem.description}" class="itemDescription"></span>
                         <div th:text="'Group: ' + ${todoitem.group.groupName}" class="itemGroup"></div>
                         <div th:text="'Status: ' + ${todoitem.status.status}" class="itemStatus"></div>
@@ -112,12 +109,12 @@
 <!--                            <label for="floatingSelect">view</label>-->
 <!--                        </div>-->
                     </div>
-                    <span class="badge bg-primary rounded-pill"><a href="/todoitem/edititem">Edit</a></span>&nbsp;
+                    <span class="badge bg-primary rounded-pill"><a th:href="'/todoitem/edititem?itemId=' + ${todoitem.id}">Edit</a></span>&nbsp;
                     <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>
                 </li>
 <!--                <li class="list-group-item d-flex justify-content-between align-items-start">-->
 <!--                    <div class="ms-2 me-auto">-->
-<!--                        <div class="fw-bold itemTitle">[Item Title]</div>-->
+
 <!--                        <span class="itemDescription">[Item Description Lorem]</span>-->
 <!--                        <div class="itemGroup">[Item Group]</div>-->
 <!--                    </div>-->

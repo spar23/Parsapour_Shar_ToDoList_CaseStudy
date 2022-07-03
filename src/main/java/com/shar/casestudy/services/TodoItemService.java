@@ -37,7 +37,7 @@ public class TodoItemService {
     }
 
     public List<TodoItem> findAllByUserID(int id) {
-        System.out.println("Hello testing");
+//        System.out.println("Hello testing");
         User user = userRepository.findById(id).orElseThrow();
         return todoItemRepository.findAllByUser(user);
     }
@@ -46,16 +46,20 @@ public class TodoItemService {
         todoItemRepository.delete(todoItem);
     }
 
-//update todoitem. post request for controller.
+//update todoitem.
+// Post request for controller.
     public void editItem(TodoItem todoItem) {
         //find the item by itemid. If item doesn't exist you can't edit it.
 
-//        TodoItem tdi = todoItemRepository.findById(itemId).orElseThrow();
+        TodoItem tdi = todoItemRepository.findById(todoItem.getId()).orElseThrow();
         Group g = todoItem.getGroup();
         //remove the item from the old group
-        todoItem.getGroup().deleteItem(todoItem);
-        todoItem.setGroup(g);
-        g.addTodoItem(todoItem);
+//        tdi.getGroup().deleteItem(todoItem);
+        tdi.setGroup(g);
+        tdi.setStatus(todoItem.getStatus());
+        tdi.setDescription(todoItem.getDescription());
+        todoItemRepository.save(tdi);
+//        g.addTodoItem(todoItem);
     }
 //create todoitem
         public void addTodoItem(TodoItem todoItem, Integer userId, Integer groupId, String statusId) {
@@ -67,7 +71,7 @@ public class TodoItemService {
             todoItem.setStatus(status);
             todoItemRepository.save(todoItem);
         }
-     //A get request for controller
+     //A Get request for controller
         public TodoItem findItemById(int itemId){
         return todoItemRepository.findById(itemId).orElseThrow();
         }
