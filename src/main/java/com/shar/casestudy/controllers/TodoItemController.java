@@ -36,11 +36,11 @@ public class TodoItemController {
     }
 
     @PostMapping("/additem")
-    public void createTodoItem(@ModelAttribute TodoItem todoItem, HttpServletRequest request) {
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        int groupId = Integer.parseInt(request.getParameter("groupId"));
-        String statusId = request.getParameter("statusId");
-        todoItemService.addTodoItem(todoItem, userId, groupId, statusId);
+    public String createTodoItem(@ModelAttribute("item") TodoItem item, @RequestParam("userId") Integer userId,
+    @RequestParam("groupId") Integer groupId, @RequestParam("statusId") String statusId) {
+
+        todoItemService.addTodoItem(item, userId, groupId, statusId);
+        return "redirect:/index";
     }
 
 
@@ -85,8 +85,9 @@ public class TodoItemController {
         return "index";
     }
     @PostMapping("/todoitem/{id}")
-    public void delete(@PathVariable Integer id){
+    public String delete(@PathVariable Integer id){
         TodoItem tdi = todoItemService.findItemById(id);
         todoItemService.delete(tdi);
+        return "redirect:/index";
     }
 }

@@ -45,23 +45,18 @@
             <form th:action="@{/todoitem/additem}"  autocomplete="off" method="post">
                 <div class="mb-3">
                     <label for="userId" class="form-label">User id</label>
-                    <input type="text" class="form-control" id="userId" name="userId" aria-describedby="valHelp" th:field="*{item.user.id}">
+                    <input type="text" class="form-control" id="userId" th:name="userId" aria-describedby="valHelp">
 
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" name="description" class="form-control" placeholder="Item Description" th:field="*{item.description}" />
                 </div>
-<!--                <div class="input-group mb-3">-->
-<!--                    <input type="text" name="group" class="form-control" placeholder="Item Group" th:field="*{item.group}" />-->
-<!--                </div>-->
-<!--                <div class="input-group mb-3">-->
-<!--                    <input type="text" name="status" class="form-control" placeholder="Item Status"-->
-<!--                           aria-label="Item Status" aria-describedby="button-addon2" th:field="*{item.status}">-->
+<!--
 
 <!--                </div>-->
                 <div class="form-floating">
 
-                    <select th:field="*{item.group.id}" class="form-select" id="groupId" name="groupId" aria-label="Floating label select example">
+                    <select class="form-select" id="groupId" th:name="groupId" aria-label="Floating label select example">
 
                         <option th:each="group: ${groups}"
                                 th:value="${group.id}"
@@ -73,7 +68,7 @@
                 <br/>
                 <div class="form-floating">
 
-                    <select th:field="*{item.status.status}" class="form-select" id="statusId" name="statusId" aria-label="Floating label select example">
+                    <select class="form-select" id="statusId" th:name="statusId" aria-label="Floating label select example">
 
                         <option th:each="sta: ${status}"
                                 th:value="${sta.status}"
