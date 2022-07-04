@@ -51,9 +51,8 @@
                 <div class="input-group mb-3">
                     <input type="text" name="description" class="form-control" placeholder="Item Description" th:field="*{item.description}" />
                 </div>
-<!--
 
-<!--                </div>-->
+
                 <div class="form-floating">
 
                     <select class="form-select" id="groupId" th:name="groupId" aria-label="Floating label select example">
@@ -78,35 +77,7 @@
                     <label for="statusId">Status</label>
                 </div>
                 <button class="btn btn-primary" type="submit" id="button-addon2">Submit</button>
-<!--                <div class="mb-3">-->
-<!--                    <label for="validationCustom01" class="form-label">Description</label>-->
-<!--                    <input type="text" class="form-control" id="validationCustom01">-->
-<!--                </div>-->
 
-<!--&lt;!&ndash;                <div class="form-floating">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <option selected value="0">No Group</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <option value="2">Group: Shopping</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <option value="3">Group: Work</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <option th:each="group: ${groups}"&ndash;&gt;-->
-<!--&lt;!&ndash;                                th:value="${group.id}"&ndash;&gt;-->
-<!--&lt;!&ndash;                                th:text="${group.groupName}"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </select>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <label for="floatingSelect">Group</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-
-<!--                <div class="mb-3">-->
-<!--                    <label for="validationCustom02" class="form-label">Group</label>-->
-<!--                    <input type="text" class="form-control" id="validationCustom02">-->
-<!--                </div>-->
-
-<!--                <div class="mb-3">-->
-<!--                    <label for="validationCustom03" class="form-label">Status</label>-->
-<!--                    <input type="text" class="form-control" id="validationCustom03">-->
-<!--                </div>-->
-<!--                <br />-->
-<!--                <br />-->
-<!--                 <button type="submit" class="btn btn-primary">Submit</button>-->
             </form>
 
 
@@ -122,13 +93,9 @@
 </div>
 <!-- /#wrapper -->
 
+
 <!-- Menu Toggle Script -->
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+<script src="theme.js"></script>
 
 
 </body>
