@@ -80,9 +80,9 @@ public class TodoItemController {
 
     @PostMapping("/edititem")
     public String editItem(@ModelAttribute("item") TodoItem todoItem) {
-        todoItemService.saveOrUpdate(todoItem);
-//        todoItemService.editItem(todoItem);
-        return "index";
+//        todoItemService.saveOrUpdate(todoItem);
+        todoItemService.editItem(todoItem);
+        return "redirect:/index";
     }
     @PostMapping("/todoitem/{id}")
     public String delete(@PathVariable Integer id){

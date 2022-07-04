@@ -53,14 +53,11 @@ public class TodoItemService {
         //find the item by itemid. If item doesn't exist you can't edit it.
 
         TodoItem tdi = todoItemRepository.findById(todoItem.getId()).orElseThrow();
-        Group g = todoItem.getGroup();
-        //remove the item from the old group
-//        tdi.getGroup().deleteItem(todoItem);
-        tdi.setGroup(g);
-        tdi.setStatus(todoItem.getStatus());
+        tdi.setGroup(groupRepository.findById(todoItem.getGroup().getId()).orElse(null));
+        tdi.setStatus(statusRepository.findById(todoItem.getStatus().getStatus()).orElse(null));
         tdi.setDescription(todoItem.getDescription());
         todoItemRepository.save(tdi);
-//        g.addTodoItem(todoItem);
+
     }
 //create todoitem
         public void addTodoItem(TodoItem todoItem, Integer userId, Integer groupId, String statusId) {
