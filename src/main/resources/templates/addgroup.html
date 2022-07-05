@@ -39,7 +39,8 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <div class="container-fluid">
+        <div class="container">
+          <div class="container-fluid">
             <h1>Add Group</h1>
 
             <form th:action="@{/group/addgroup}" method="POST">
@@ -49,11 +50,24 @@
 
                 </div>
 
-                <div class="mb-3">
-                    <label for="groupname" class="form-label">Group Name</label>
-                    <input th:field="*{newgroup.groupName}" type="text" class="form-control" id="groupname" name="groupname" aria-describedby="valHelp">
+                <div class="form-floating">
 
+                    <select class="form-select" id="groupId" th:name="groupId" aria-label="Floating label select example">
+
+                        <option th:each="group: ${groups}"
+                                th:value="${group.id}"
+                                th:text="${group.groupName}"/>
+
+                    </select>
+                    <label for="groupId">Group</label>
                 </div>
+                <br/>
+
+<!--                <div class="mb-3">-->
+<!--                    <label for="groupname" class="form-label">Group Name</label>-->
+<!--                    <input th:field="*{newgroup.groupName}" type="text" class="form-control" id="groupname" name="groupname" aria-describedby="valHelp">-->
+
+<!--                    </div>-->
 
                 <div class="mb-3">
                     <label for="hexcolor" class="form-label">Hex Color</label>
@@ -77,6 +91,7 @@
             <div style="float:right"><a href="#addItemButton1" class="btn btn-secondary" id="addItemButton1">Cancel</a></div>
             <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
         </div>
+        </div>
     </div>
     <!-- /#page-content-wrapper -->
 
@@ -84,7 +99,7 @@
 <!-- /#wrapper -->
 
 <!-- Menu Toggle Script -->
-<script src="theme.js"></script>
+<script src="/theme.js"></script>
 
 
 </body>

@@ -73,11 +73,13 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <div class="container-fluid">
+        <div class="container">
+
+          <div class="container-fluid">
 
             <h1>My List</h1>
             <div class="form-floating">
-<!--                th:field="*{selected_group}"-->
+
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
                     <option selected value="0">All items</option>
                     <option th:each="group: ${groups}"
@@ -85,9 +87,8 @@
                             th:text="${group.groupName}"/>
                 </select>
 
-
                 <label for="floatingSelect">View</label>
-<!--                <div th:text="${selected_group}"/>-->
+
             </div>
 
 
@@ -140,9 +141,12 @@
 <!--                    <span class="badge bg-primary rounded-pill"><a onclick="myFunction()" href="#">Delete</a></span>-->
 <!--                </li>-->
             </ol>
-            <div style="float:right"><a href="#addItemButton" class="btn btn-secondary" id="addItemButton">Add Item</a></div>
+<!--            <div style="float:right"><a href="#addItemButton" class="btn btn-secondary" id="addItemButton">Add Item</a></div>-->
+        </div>
+
         </div>
     </div>
+
     <!-- /#page-content-wrapper -->
 
 </div>
@@ -150,8 +154,8 @@
 
 
 
-<!-- Menu Toggle Script -->
-<script src="theme.js"></script>
+<!-- Theme Toggle Script -->
+<script src="/theme.js"></script>
 
 </body>
 </html>
