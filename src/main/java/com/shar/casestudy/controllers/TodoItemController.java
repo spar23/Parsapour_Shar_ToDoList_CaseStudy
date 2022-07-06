@@ -79,7 +79,7 @@ public class TodoItemController {
 
     @PostMapping("/edititem")
     public String editItem(@ModelAttribute("item") TodoItem todoItem) {
-//        todoItemService.saveOrUpdate(todoItem);
+
         todoItemService.editItem(todoItem);
         return "redirect:/index";
     }

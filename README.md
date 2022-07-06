@@ -3,13 +3,13 @@
 
 ### Technologies
 
-Springboot
-Maven
-Java corretto 11
-Spring JPA
-MariaDB
-Spring Security
-Thymeleaf
+ * Springboot
+ * Maven
+ * Java corretto 11
+ * Spring JPA
+ * MariaDB
+ * Spring Security
+ * Thymeleaf
 
 ### Business Requirement:
 
@@ -36,13 +36,13 @@ findAllByUserID in todoitem service
 
 starter dependencies:
 
-Spring web
-Spring Boot DevTools
-Lombok
-Thymeleaf
-Mariadb Driver
-Spring Data JPA
-Validation
+ * Spring web
+* Spring Boot DevTools
+* Lombok
+* Thymeleaf
+* Mariadb Driver
+* Spring Data JPA
+* Validation
 
 ### Requirement 1 - Models:
 
