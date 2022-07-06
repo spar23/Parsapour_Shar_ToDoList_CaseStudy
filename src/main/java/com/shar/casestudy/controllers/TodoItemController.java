@@ -50,7 +50,6 @@ public class TodoItemController {
         if (id == null) {
             id = 1;
         }
-
         model.addAttribute("todoitems", todoItemService.findAllByUserID(id));
         model.addAttribute("groups", groupService.getGroupList(id));
         return "index";

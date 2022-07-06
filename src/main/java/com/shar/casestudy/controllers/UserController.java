@@ -14,8 +14,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("users")
 public class UserController {
 
-//    @GetMapping(value = "/getuser")
-//    public User getUserByUserId(int userID){
-//
-//    }
 }

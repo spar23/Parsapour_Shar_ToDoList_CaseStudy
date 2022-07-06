@@ -38,17 +38,6 @@ public class GroupService {
         User user = userRepository.findById(userID).orElseThrow();
         group.setUser(user);
         groupRepository.save(group);
-//        Group possibleGroup = groupRepository.findByGroupNameAndUser(group.getGroupName(), user);
-//        if (possibleGroup == null) {
-////            Group group = new Group(groupName, hexColor, user);
-//            group.setUser(user);
-//            groupRepository.save(group);
-//            user.addGroup(group);
-//            userRepository.save(user);
-//        } else {
-//            return;
-//
-//        }
 
     }
 
@@ -62,10 +51,5 @@ public class GroupService {
 
     }
 
-
-
-//    public List<Student> findAllSortedBy(Sort sort){
-//        return studentRepository.findAll(sort);
-//    }
 
 }

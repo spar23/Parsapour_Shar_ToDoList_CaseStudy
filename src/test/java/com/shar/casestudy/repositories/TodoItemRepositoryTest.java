@@ -37,19 +37,6 @@ class TodoItemRepositoryTest {
     StatusRepository statusRepository;
 
 
-//    @Autowired
-//    ApplicationCommandLineRunner applicationCommandLineRunner;
-//
-//    @BeforeAll
-//    void beforeAll() {
-////        applicationCommandLineRunner.run();
-//
-//    }
-//
-//    @AfterEach
-//    void tearDown() {
-//    }
-
     @Test
     void findAllByUser() {
         User u = new User("Sue", "pass");
@@ -63,6 +50,6 @@ class TodoItemRepositoryTest {
         User u1 = userRepository.findById(1).orElse(null);
         //retreive the todoitems
         List<TodoItem> todoItems = todoItemRepository.findAllByUser(u1);
-//        assertThat(todoItems.size(;
+        assertThat(todoItems.size()).isEqualTo(1);
     }
 }

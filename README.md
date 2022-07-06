@@ -1,25 +1,104 @@
-# Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+# Springboot ToDoList Application
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#web)
-* [Thymeleaf](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#web.servlet.spring-mvc.template-engines)
-* [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#actuator)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#data.sql.jpa-and-spring-data)
-* [Spring Data JDBC](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#data.sql.jdbc)
+### Technologies
 
-### Guides
-The following guides illustrate how to use some features concretely:
+Springboot
+Maven
+Java corretto 11
+Spring JPA
+MariaDB
+Spring Security
+Thymeleaf
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
-* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Using Spring Data JDBC](https://github.com/spring-projects/spring-data-examples/tree/master/jdbc/basics)
+### Business Requirement:
 
+The Todolist Application enables a user to Show the item list as the Home page. Edit and delete item
+on the Home page. Add item and Add Group for the item on different pages. Change the theme to dark
+light mode in the navbar.
+
+### Work-Flow:
+
+homepage/
+Show item list
+
+Add item
+
+Edit item in service
+
+find student by email
+
+saveOrUpdateGroup in groupservice
+
+getGroupList in groupservice
+
+findAllByUserID in todoitem service
+
+starter dependencies:
+
+Spring web
+Spring Boot DevTools
+Lombok
+Thymeleaf
+Mariadb Driver
+Spring Data JPA
+Validation
+
+### Requirement 1 - Models:
+
+no args constructor
+
+all args constructor
+
+required args constructor
+
+setters and getter
+
+toString (exclude collections to avoid infinite loops)
+
+override equals and hashcode methods (don't use lombok here)
+
+helper methods
+
+### Requirement 2 - Data Access Object(Repositories) interfaces:
+
+GroupRepository
+
+TodolistRepository
+
+statusRepository
+
+UserRepository
+
+
+### Requirement 3 - Service layer:
+
+implement interfaces:
+
+GroupService: implement GroupRepository required methods.
+TodolistService: implement TodolistRepository required methods.
+
+### Requirement 4 - Controllers
+
+HomeController
+
+    general endpoints
+StudentController
+
+    mapping for services
+CourseController
+
+    mapping for services
+
+### Requirement 5 - View using Thymeleaf
+
+    build a template using thymeleaf fragments
+
+### Requirement 6 - Spring Security
+
+      implement spring security
+
+### Requirement 7 - Testing
+
+     use mock database H2 to test data
+     AssertJ tests

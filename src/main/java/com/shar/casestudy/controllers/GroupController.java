@@ -22,10 +22,7 @@ public class GroupController {
         this.groupService = groupService;
     }
 
-//    @GetMapping("/mylist")
-//    public void showGroupList(int userID){
-//
-//    }
+
 @GetMapping("/addgroup")
 public String getAllGroups(Integer id, Model model){
     if(id == null){

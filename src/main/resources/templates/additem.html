@@ -42,7 +42,7 @@
         <div class="container">
           <div class="container-fluid">
              <h1>Add Item</h1>
-<!--            <p th:if="${item.itemId ne null}" class="text-warning">Persisted!</p>-->
+
              <form th:action="@{/todoitem/additem}"  autocomplete="off" method="post">
                 <div class="mb-3">
                     <label for="userId" class="form-label">User id</label>
@@ -83,9 +83,9 @@
             </form>
 
 
-            <div style="float:right; margin-left: 12px;"><a href="#addItemButton" class="btn btn-secondary" id="addItemButton">Save Item</a></div>
-            <div style="float:right"><a href="#addItemButton" class="btn btn-secondary" id="addItemButton1">Cancel</a></div>
-            <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
+<!--            <div style="float:right; margin-left: 12px;"><a href="#addItemButton" class="btn btn-secondary" id="addItemButton">Save Item</a></div>-->
+<!--            <div style="float:right"><a href="#addItemButton" class="btn btn-secondary" id="addItemButton1">Cancel</a></div>-->
+
           </div>
         </div>
 
@@ -97,7 +97,7 @@
 <!-- /#wrapper -->
 
 
-<!-- Menu Toggle Script -->
+<!-- Theme Toggle Script -->
 <script src="/theme.js"></script>
 
 

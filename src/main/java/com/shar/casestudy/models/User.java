@@ -20,6 +20,7 @@ import java.util.Set;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
+@Table(name="user_todo")
 public class User {
 
     @Id
