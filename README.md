@@ -26,8 +26,6 @@ Add item
 
 Edit item in service
 
-find student by email
-
 saveOrUpdateGroup in groupservice
 
 getGroupList in groupservice
